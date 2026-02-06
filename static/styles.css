@@ -1,0 +1,302 @@
+body { 
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    position: relative; /* Adiciona um contexto para a linha horizontal */
+    height: 100vh; /* Garante que o body ocupe toda a altura da tela */
+    overflow-y: auto; /* Permite rolar verticalmente se o conteúdo exceder a altura */
+}
+
+.sidebar {
+    width: 220px; /* Aumenta a largura da barra lateral */
+    background-color: white;
+    color: black;
+    height: calc(100vh - 160px); /* Aumenta a altura da barra lateral */
+    padding: 15px;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    position: relative;
+    margin-right: 20px; /* Adiciona um espaço à direita da barra lateral */
+}
+
+.logo-space {
+    height: 60px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.sidebar button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    white-space: pre-wrap;
+}
+
+.sidebar button:hover {
+    background-color: #f0f0f0;
+}
+
+.sidebar button.active {
+    background-color: black;
+    color: white;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Garante que o conteúdo seja disposto em coluna */
+    align-items: center; /* Centraliza o conteúdo */
+    overflow: auto; /* Permite rolar se o conteúdo exceder a altura da tela */
+    position: relative; /* Para garantir que os elementos não saiam do contêiner */
+    height: calc(100vh - 160px); /* Define altura para permitir rolagem e ocupar toda a área */
+}
+
+/* Nova linha horizontal */
+.horizontal-line {
+    position: fixed;
+    bottom: 0; /* Ajusta para que a barra fique fixada na parte inferior */
+    left: 0;
+    width: 100%;
+    height: 160px; /* Aumenta a altura da linha inferior */
+    background-color: white; /* Fundo branco para a linha */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0; /* Fica atrás do conteúdo principal */
+    border-top: 2px solid black; /* Adiciona a linha separadora */
+}
+
+/* Container da logo */
+.logo-container {
+    padding: 10px;
+}
+
+/* Ajuste do tamanho da logo */
+.horizontal-line .logo {
+    max-height: 120px; /* Aumenta a altura da logo */
+    max-width: 250px; /* Aumenta a largura da logo */
+}
+
+h1 {
+    margin: 0;
+}
+
+.formulario-container {
+    width: 100%;
+    max-width: 90%; /* Mantém o formulário mais largo */
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    position: relative;
+    margin-top: 40px;
+    padding-bottom: 120px;
+    font-size: 20px;
+    /* Alterações solicitadas */
+    width: calc(100% - 40px); /* Aproxima o formulário das laterais da página */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.formulario-container h2 {
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 24px;
+    color: #7a7a7a;
+}
+
+.download-buttons {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.download-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.download-buttons a:hover {
+    background-color: #333;
+}
+
+.upload-container {
+    margin-top: 60px;
+}
+
+.upload-container input[type="file"] {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Mantém o estilo original dos botões de download e upload */
+.file-download-buttons {
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+}
+
+.file-download-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+}
+
+.file-download-buttons a:hover {
+    background-color: #333;
+}
+
+/* Estilos para o contêiner de plots */
+#plots-container {
+    width: 100%;
+    max-width: 90%;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 40px;
+}
+
+/* Imagens no contêiner de plots */
+.images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.images-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.images-row img {
+    max-width: 48%; /* Ajusta o tamanho da imagem para que se encaixem */
+    height: auto;
+    margin: 5px;
+}
+
+.input-container {
+    margin-top: 20px;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.h-input, .theta-input {
+    width: 48%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-plot {
+    width: 70%; /* Diminuído para 70% para tornar o gráfico principal menor */
+    margin-bottom: 20px; /* Espaço entre a imagem principal e as sub-imagens */
+}
+
+.sub-plots {
+    display: flex;
+    justify-content: space-around; /* Espaçamento uniforme entre as imagens */
+    flex-wrap: wrap; /* Para garantir que as imagens se organizem em linhas */
+}
+
+.sub-plot {
+    width: 48%; /* Aumentado para 48% para os subgráficos ficarem maiores */
+    margin: 10px; /* Espaço entre as sub-imagens */
+}
+
+/* Estilos para o contêiner de visualização de plots */
+#visualization-container {
+    display: none; /* Inicialmente oculto */
+    width: 100%;
+    max-width: 90%;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    margin-top: 40px;
+    overflow: auto; /* Permite rolar se as imagens excederem a altura do contêiner */
+}
+
+.visualization-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visualization-main {
+    width: 70%; /* Ajustado para 70% */
+    margin-bottom: 20px; /* Espaço entre a imagem principal e as sub-imagens */
+}
+
+.visualization-sub-plots {
+    display: flex;
+    justify-content: center; /* Alinhamento centralizado */
+    flex-wrap: wrap; /* Para garantir que as sub-imagens fiquem organizadas em linhas */
+}
+
+.visualization-sub-plot {
+    width: 70%; /* Ajustado para 48% */
+    margin: 20px; /* Espaço entre as sub-imagens */
+}

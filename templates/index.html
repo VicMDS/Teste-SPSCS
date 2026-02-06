@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPSCS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo-space"></div>
+        <button onclick="showPage('preencher-solo')">Fill<br>One Unique Soil</button>
+        <button onclick="showPage('importar-xlsx')">Import<br>XLSX</button>
+        <button onclick="showPage('sobre-nos')">About Us</button>
+    </div>
+    
+    <div class="content" id="content">
+        <h1>Welcome</h1>
+    </div>
+
+    <!-- Horizontal line with the logo -->
+    <div class="horizontal-line">
+        <div class="logo-container">
+            <img src="../assets/logoSGB.png" alt="SGB Logo" class="logo">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+
