@@ -138,7 +138,7 @@ def calculate_parameters2(download_dir, plots_dir, df_soil_sorted, df_bounds, df
                     p0=p0,
                     bounds=bounds,
                     method='trf',
-                    maxfev=100000,
+                    maxfev=10000,
                     absolute_sigma=True
                 )
 
@@ -973,7 +973,7 @@ def calculate_parameters(
 
             res2a, _ = curve_fit(
                 lambda press, par0, par2, par3: vg4ssq2(press, par0, par2, par3, par1_value),
-                press, theta, p0=par, bounds=bounds, method='trf', maxfev=100000, absolute_sigma=True
+                press, theta, p0=par, bounds=bounds, method='trf', maxfev=10000, absolute_sigma=True
             )
 
             ssq2a = vg4ssq(res2a, press, theta, par1_value)
