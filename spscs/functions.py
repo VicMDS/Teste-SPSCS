@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import pandas as pd
-import openpyxl  # (mantido, embora não seja mais usado para salvar intermediários)
 import ternary
 import zipfile
 
