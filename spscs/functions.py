@@ -66,15 +66,7 @@ def calculate_bounds2(download_dir):
 
 
 def calculate_parameters2(download_dir, plots_dir, df_soil_sorted, df_bounds, df_iniciais):
-    """
-    Executa todo o pipeline mantendo intermediários como DataFrames em memória,
-    SEM salvar Excels intermediários (Parameters/RMSE/ERRORMAX/Adherence/SoilSorted_Head/Bounds/InitialParam/ret).
-
-    Mantém as plotagens e salvamentos de imagens/ZIP NOS MESMOS LOCAIS do código original.
-
-    Salva apenas:
-      - YourSoilClassified.xlsx (no download_dir)
-    """
+   
 
     # ----------------------------
     # Ajuste Van Genuchten (mesma forma, mas sem ret.txt / sem leitura de Parameters.xlsx etc.)
@@ -428,7 +420,7 @@ def calculate_parameters2(download_dir, plots_dir, df_soil_sorted, df_bounds, df
         df['SampleID'] = df['SampleID'].astype(str)
 
     # ----------------------------
-    # PLOTAGENS (NÃO ALTERADAS) — usa SoilFull.xlsx e df (que substitui adherence_df)
+    # PLOTAGENS  — usa SoilFull.xlsx e df (que substitui adherence_df)
     # ----------------------------
     soilfull_df = pd.read_excel(os.path.join(download_dir, 'SoilFull.xlsx'))
     adherence_df = df.copy()  # substitui a leitura do Adherence.xlsx, mantendo o mesmo conteúdo em memória
