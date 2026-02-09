@@ -6,18 +6,9 @@ import uuid
 import time
 import shutil
 
-# Mantém ASSETS_FOLDER fixo (normalmente arquivos estáticos do app)
+# Mantive ASSETS_FOLDER fixo 
 from spscs.config import ASSETS_FOLDER
 
-# ==========================================================
-# ADIÇÕES NECESSÁRIAS PARA COMPATIBILIZAR COM O CÓDIGO NOVO
-# (sem mexer no resto do seu arquivo)
-# - O código novo não salva SoilSorted/SoilComplete/SoilFull como Excel no pipeline,
-#   mas o endpoint /create_excel ainda cria esses arquivos "mantido".
-# - Criamos wrappers calculate_bounds2/calculate_parameters2 somente se não existirem,
-#   usando as novas funções calculate_bounds/calculate_parameters (em memória),
-#   e salvando apenas o YourSoilClassified.xlsx (como no código novo).
-# ==========================================================
 
 # Cache simples para ret_array gerado em calculate_bounds2 (por pasta do usuário)
 _RET_CACHE = {}
@@ -54,13 +45,10 @@ except Exception:
 
     def calculate_parameters2(download_dir, plots_dir, df_soil_sorted, df_bounds, df_iniciais):
         """
-        Wrapper compatível com o fluxo antigo:
         - Lê SoilComplete.xlsx e SoilFull.xlsx (que o endpoint /create_excel ainda cria)
         - Cria um soils_discarded_df mínimo (sem descartes, OBS='-')
         - Recupera ret_array do cache
         - Chama calculate_parameters(...) do código novo
-        - Salva APENAS YourSoilClassified.xlsx (como o código novo)
-        - NÃO altera nada dos plots (a função nova gera os plots/zip igual)
         """
         soil_complete_path = os.path.join(download_dir, "SoilComplete.xlsx")
         soil_full_path = os.path.join(download_dir, "SoilFull.xlsx")
@@ -110,10 +98,6 @@ except Exception:
 
         return your_soil_classified_df
 
-# ==========================================================
-# FIM DAS ADIÇÕES
-# ==========================================================
-
 
 app = Flask(__name__)
 
@@ -132,7 +116,7 @@ def _ensure_user_id() -> str:
 def _cleanup_old_temp_dirs(max_age_seconds: int = 2 * 60 * 60) -> None:
     """
     Remove diretórios temporários antigos (por idade) para evitar acúmulo.
-    max_age_seconds: idade máxima em segundos (padrão: 2 horas).
+    max_age_seconds: idade máxima em segundos.
     """
     root = os.path.join(tempfile.gettempdir(), "spscs")
     if not os.path.isdir(root):
@@ -280,9 +264,7 @@ def create_excel():
     soil_sorted_path = os.path.join(DOWNLOAD_FOLDER, 'SoilSorted.xlsx')
     soil_sorted.to_excel(soil_sorted_path, index=False)
 
-    # -------------------------------------------------------
-    # AQUI É A ÚNICA ALTERAÇÃO NECESSÁRIA PARA "CASAR" COM O CÓDIGO NOVO
-    # -------------------------------------------------------
+
     # calculate_bounds2 agora RETORNA dataframes em memória
     df_soil_sorted, df_bounds, df_iniciais = calculate_bounds2(DOWNLOAD_FOLDER)
 
@@ -352,6 +334,7 @@ def ternary_plots(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 
 
